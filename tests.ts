@@ -1,4 +1,4 @@
-import { IsNullableType, IsExactType, IsNonNullableType, HasType, NotHasType, assert } from "./index";
+import { IsNullableType, IsExactType, IsNonNullableType, HasType, NotHasType, IsNeverType, assert } from "./index";
 
 // IsNullableType
 {
@@ -47,7 +47,7 @@ import { IsNullableType, IsExactType, IsNonNullableType, HasType, NotHasType, as
 
 // NotHasType
 {
-    // not matching
+    // matching
     assert<NotHasType<string | number, Date>>(true);
     assert<NotHasType<string, number>>(true);
 
@@ -55,4 +55,13 @@ import { IsNullableType, IsExactType, IsNonNullableType, HasType, NotHasType, as
     assert<NotHasType<string | number, string>>(false);
     assert<NotHasType<number, number>>(false);
     assert<NotHasType<string | number, Date | string>>(false); // should be true?
+}
+
+// IsNeverType
+{
+    // matching
+    assert<IsNeverType<never>>(true);
+
+    // not matching
+    assert<IsNeverType<string>>(false);
 }
