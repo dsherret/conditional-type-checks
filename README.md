@@ -13,6 +13,7 @@ These types do the checks:
 * `IsExactType<T, U>` - Checks if `T` exactly matches `U`.
 * `HasType<T, U>` - Checks if `T` has `U`.
 * `NotHasType<T, U>` - Checks if `T` does not have `U`.
+* `IsNeverType<T>` - Checks if `T` is the never type.
 * More to come...
 
 They will resolve to the type `true` when they match and `false` otherwise.

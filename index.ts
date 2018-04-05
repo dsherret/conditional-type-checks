@@ -31,5 +31,7 @@ export type IsNonNullableType<T> = IsNullableType<T> extends true ? false : true
  */
 export type IsExactType<T, U> = Exclude<T, U> extends never ? Exclude<U, T> extends never ? true : false : false;
 
-// this doesn't work so don't add it
-//export type IsNeverType<T> = T extends never ? true : false;
+/**
+ * Checks it the type is the never type.
+ */
+export type IsNeverType<T> = [T] extends [never] ? true : false;
