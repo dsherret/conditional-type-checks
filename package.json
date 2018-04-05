@@ -1,0 +1,25 @@
+{
+  "name": "conditional-type-checks",
+  "version": "0.1.0",
+  "description": "Types for testing TypeScript types.",
+  "main": "dist/index.js",
+  "typescript": "dist/index.d.ts",
+  "scripts": {
+    "test": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsherret/conditional-type-checks.git"
+  },
+  "keywords": [
+    "typescript",
+    "testing",
+    "types"
+  ],
+  "author": "David Sherret",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dsherret/conditional-type-checks/issues"
+  },
+  "homepage": "https://github.com/dsherret/conditional-type-checks#readme"
+}
