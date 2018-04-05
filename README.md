@@ -25,11 +25,11 @@ Doing a test:
 import { assert, IsExactType, IsNullableType } from "conditional-type-checks";
 
 const result = someFunction(someParam);
-// throws a compile error if the type of `result` is not exactly `string | number`
+// compile error if the type of `result` is not exactly `string | number`
 assert<IsExactType<string | number, typeof result>>(true);
 
 const nextResult = someFunction(otherParam);
-assert<IsNullable<typeof nextResult>>(false); // throws when nextResult is nullable
+assert<IsNullable<typeof nextResult>>(false); // compile error when the type of nextResult is nullable
 ```
 
 Failure:
