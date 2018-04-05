@@ -1,4 +1,4 @@
-import { IsNullable, IsExactType } from "./index";
+import { IsNullableType, IsExactType } from "./index";
 
 // todo: more tests... kind of tired at the moment
 
@@ -7,12 +7,12 @@ const never: never = undefined as any as never;
 // IsNullable
 {
     // matching
-    const match1: IsNullable<string | null> = true;
-    const match2: IsNullable<string | undefined> = true;
-    const match3: IsNullable<null | undefined> = true; // maybe this shouldn't be true?
+    const match1: IsNullableType<string | null> = true;
+    const match2: IsNullableType<string | undefined> = true;
+    const match3: IsNullableType<null | undefined> = true; // maybe this shouldn't be true?
 
     // not matching
-    const fail1: IsNullable<string> = never;
+    const fail1: IsNullableType<string> = never;
 }
 
 // IsExactType

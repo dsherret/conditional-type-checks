@@ -6,9 +6,9 @@ This library offers reusable types to do these checks:
 
 * `HasType<T, U>` - Checks if `T` has `U`.
 * `NotHasType<T, U>` - Checks if `T` does not have `U`.
-* `IsNever<T>` - Checks if `T` is the `never` type.
-* `IsNullable<T>` - Checks if `T` is possibly `null` or `undefined`.
-* `IsNonNullable<T>` - Checks if `T` is not possibly `null` or `undefined`.
+* `IsNeverType<T>` - Checks if `T` is the `never` type.
+* `IsNullableType<T>` - Checks if `T` is possibly `null` or `undefined`.
+* `IsNonNullableType<T>` - Checks if `T` is not possibly `null` or `undefined`.
 * `IsExactType<T, U>` - Checks if `T` exactly matches `U`.
 * More to come...
 
@@ -29,5 +29,5 @@ Example failure:
 
 ```ts
 // causes a compile error that `true` is not assignable to `never`
-const nullableTest: IsNullable<string> = true;
+const nullableTest: IsNullableType<string> = true;
 ```
