@@ -6,22 +6,22 @@ export type HasType<T, U> = T extends U ? true : never;
 /**
  * If the type does not have the specified type.
  */
-export type NotHasType<T, U> = IsNever<HasType<T, U>>;
+export type NotHasType<T, U> = IsNeverType<HasType<T, U>>;
 
 /**
  * If the type is the never type.
  */
-export type IsNever<T> = HasType<T, never>;
+export type IsNeverType<T> = HasType<T, never>;
 
 /**
  * If the type is possibly null or undefined.
  */
-export type IsNullable<T> = T extends null | undefined ? true : never;
+export type IsNullableType<T> = T extends null | undefined ? true : never;
 
 /**
  * If the type is not possibly null or undefined.
  */
-export type IsNonNullable<T> = IsNever<IsNullable<T>>;
+export type IsNonNullableType<T> = IsNeverType<IsNullableType<T>>;
 
 /**
  * If the type is the exact type.
