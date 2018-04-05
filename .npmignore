@@ -1,0 +1,16 @@
+/.vs
+/node_modules
+/coverage
+/.vscode
+*.js.map
+/obj
+/temp
+/bin
+*.suo
+*.csproj
+*.csproj.user
+*.sln
+index.ts
+tests.ts
+dist/tests.js
+dist/tests.d.ts
