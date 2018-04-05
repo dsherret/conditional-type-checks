@@ -33,7 +33,7 @@ assert<IsExactType<string | number, typeof result>>(true);
 Failure:
 
 ```ts
-// causes a compile error that `true` is not assignable to `never`
+// causes a compile error that `true` is not assignable to `false`
 assert<IsNullableType<string>>(true); // string is not nullable
 ```
 
