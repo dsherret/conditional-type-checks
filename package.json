@@ -1,9 +1,9 @@
 {
     "name": "conditional-type-checks",
-    "version": "0.1.5",
+    "version": "0.2.0",
     "description": "Types for testing TypeScript types.",
     "main": "dist/index.js",
-    "typings":  "dist/index.d.ts",
+    "typings": "dist/index.d.ts",
     "typescript": {
         "definition": "dist/index.d.ts"
     },

@@ -1,4 +1,4 @@
-import { IsNullableType, IsExactType, IsNonNullableType, HasType, NotHasType } from "./index";
+import { IsNullableType, IsExactType, IsNonNullableType, HasType, NotHasType, assert } from "./index";
 
 // it seems this isNever method is necessary because assigning `never` to `true` is ok
 const never: never = undefined as any as never;
@@ -7,7 +7,7 @@ const isNever: (...values: never[]) => void = () => { };
 // IsNullableType
 {
     // matching
-    const match1: IsNullableType<string | null> = true;
+    assert<IsNullableType<string | null>>(true); // todo: use this assert below
     const match2: IsNullableType<string | undefined> = true;
     const match3: IsNullableType<null | undefined> = true; // maybe this shouldn't be true?
 

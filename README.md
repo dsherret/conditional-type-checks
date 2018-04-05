@@ -22,19 +22,19 @@ They will resolve to the type `true` when they match and `never` otherwise.
 Doing a test:
 
 ```ts
-import { IsExactType } from "conditional-type-checks";
+import { assert, IsExactType } from "conditional-type-checks";
 
 const result = someFunction(someString);
 
 // throws a compile error if the type of `result` is not exactly `string | number`
-const exactTypeTest: IsExactType<string | number, typeof result> = true;
+assert<IsExactType<string | number, typeof result>>(true);
 ```
 
 Failure:
 
 ```ts
 // causes a compile error that `true` is not assignable to `never`
-const nullableTest: IsNullableType<string> = true; // string is not nullable
+assert<IsNullableType<string>>(true); // string is not nullable
 ```
 
 ## Install
