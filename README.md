@@ -26,7 +26,7 @@ import { assert, IsExactType, IsNullableType } from "conditional-type-checks";
 
 const result = someFunction(someParam);
 // compile error if the type of `result` is not exactly `string | number`
-assert<IsExactType<string | number, typeof result>>(true);
+assert<IsExactType<typeof result, string | number>>(true);
 
 const nextResult = someFunction(otherParam);
 assert<IsNullable<typeof nextResult>>(false); // compile error when the type of nextResult is nullable
