@@ -15,7 +15,7 @@ These types do the checks:
 * `NotHasType<T, U>` - Checks if `T` does not have `U`.
 * More to come...
 
-They will resolve to the type `true` when they match and `never` otherwise.
+They will resolve to the type `true` when they match and `false` otherwise.
 
 ## Use
 
@@ -32,7 +32,7 @@ assert<IsExactType<typeof result, string | number>>(true);
 Failure:
 
 ```ts
-// causes a compile error that `true` is not assignable to `never`
+// causes a compile error that `true` is not assignable to `false`
 assert<IsNullableType<string>>(true); // string is not nullable
 ```
 
