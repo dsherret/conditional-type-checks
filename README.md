@@ -17,17 +17,19 @@ These types do the checks:
 
 They will resolve to the type `true` when they match and `never` otherwise.
 
-## Examples
+## Use
 
 Doing a test:
 
 ```ts
-import { assert, IsExactType } from "conditional-type-checks";
+import { assert, IsExactType, IsNullableType } from "conditional-type-checks";
 
-const result = someFunction(someString);
-
+const result = someFunction(someParam);
 // throws a compile error if the type of `result` is not exactly `string | number`
 assert<IsExactType<string | number, typeof result>>(true);
+
+const nextResult = someFunction(otherParam);
+assert<IsNullable<typeof nextResult>>(false); // throws when nextResult is nullable
 ```
 
 Failure:
