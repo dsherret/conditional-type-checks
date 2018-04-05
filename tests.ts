@@ -1,7 +1,5 @@
 import { IsNullableType, IsExactType, IsNonNullableType, HasType, NotHasType, assert } from "./index";
 
-const never: never = undefined as any as never;
-
 // IsNullableType
 {
     // matching
@@ -10,7 +8,7 @@ const never: never = undefined as any as never;
     assert<IsNullableType<null | undefined>>(true); // maybe this shouldn't be true?
 
     // not matching
-    assert<IsNullableType<string>>(never);
+    assert<IsNullableType<string>>(false);
 }
 
 // IsNonNullableType
@@ -19,9 +17,9 @@ const never: never = undefined as any as never;
     assert<IsNonNullableType<string>>(true);
 
     // not matching
-    assert<IsNonNullableType<string | null>>(never);
-    assert<IsNonNullableType<string | undefined>>(never);
-    assert<IsNonNullableType<null | undefined>>(never); // maybe this should be true?
+    assert<IsNonNullableType<string | null>>(false);
+    assert<IsNonNullableType<string | undefined>>(false);
+    assert<IsNonNullableType<null | undefined>>(false); // maybe this should be true?
 }
 
 // IsExactType
@@ -31,8 +29,8 @@ const never: never = undefined as any as never;
     assert<IsExactType<string | number | Date, string | number | Date>>(true);
 
     // not matching
-    assert<IsExactType<string | number | Date, string | number>>(never);
-    assert<IsExactType<string, string | number>>(never);
+    assert<IsExactType<string | number | Date, string | number>>(false);
+    assert<IsExactType<string, string | number>>(false);
 }
 
 // HasType
@@ -43,8 +41,8 @@ const never: never = undefined as any as never;
     assert<HasType<string | number, Date | string>>(true); // maybe?
 
     // not matching
-    assert<HasType<string | number, Date>>(never);
-    assert<HasType<string, number>>(never);
+    assert<HasType<string | number, Date>>(false);
+    assert<HasType<string, number>>(false);
 }
 
 // NotHasType
@@ -54,7 +52,7 @@ const never: never = undefined as any as never;
     assert<NotHasType<string, number>>(true);
 
     // not matching
-    assert<NotHasType<string | number, string>>(never);
-    assert<NotHasType<number, number>>(never);
-    assert<NotHasType<string | number, Date | string>>(never); // should be true?
+    assert<NotHasType<string | number, string>>(false);
+    assert<NotHasType<number, number>>(false);
+    assert<NotHasType<string | number, Date | string>>(false); // should be true?
 }
