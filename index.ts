@@ -1,6 +1,6 @@
 /**
- * Asserts if the
- * @param expectTrue - If the passed in type parameter is expected to be true.
+ * Asserts if the type provided in the type parameter resolves to true.
+ * @param expectTrue - True if the passed in type parameter resolved to true.
  */
 export function assert<T extends true>(expectTrue: T) {
 }
