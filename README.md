@@ -6,7 +6,6 @@ This library offers reusable types to do these checks:
 
 * `HasType<T, U>` - Checks if `T` has `U`.
 * `NotHasType<T, U>` - Checks if `T` does not have `U`.
-* `IsNeverType<T>` - Checks if `T` is the `never` type.
 * `IsNullableType<T>` - Checks if `T` is possibly `null` or `undefined`.
 * `IsNonNullableType<T>` - Checks if `T` is not possibly `null` or `undefined`.
 * `IsExactType<T, U>` - Checks if `T` exactly matches `U`.
