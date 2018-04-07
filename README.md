@@ -19,12 +19,12 @@ They will resolve to the type `true` when they match and `false` otherwise.
 
 ## Ways to Test
 
-Use:
+Use either (whichever you prefer);
 
-1. `AssertTrue` or `AssertFalse` - Have all tests in the type domain.
-2. `assert` - Alternate testing syntax.
+1. The `AssertTrue` or `AssertFalse` types.
+2. The `assert` function.
 
-## Use with `AssertTrue` and `AssertFalse`
+### Use with `AssertTrue` and `AssertFalse`
 
 Doing a test:
 
@@ -39,7 +39,7 @@ type doTest = AssertTrue<HasType<typeof result, string> | IsNullableType<typeof 
 
 **Warning:** Do not use an intersection type in the type parameter for `AssertTrue` and `AssertFalse` (ex. `HasType<string | number, string> & IsNeverType<never>`) because it will cause the assertion to pass if only one of the checks passes.
 
-## Use with `assert`
+### Use with `assert`
 
 Doing a test:
 
