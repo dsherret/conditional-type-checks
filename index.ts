@@ -5,6 +5,9 @@
 export function assert<T extends true | false>(expectTrue: T) {
 }
 
+export type AssertTrue<T extends true> = never;
+export type AssertFalse<T extends false> = never;
+
 /**
  * If the type has the specified type.
  */
@@ -19,11 +22,6 @@ export type NotHasType<T, U> = HasType<T, U> extends true ? false : true;
  * If the type is possibly null or undefined.
  */
 export type IsNullableType<T> = Extract<T, null | undefined> extends never ? false : true;
-
-/**
- * If the type is not possibly null or undefined.
- */
-export type IsNonNullableType<T> = IsNullableType<T> extends true ? false : true;
 
 /**
  * If the type is the exact type.
