@@ -9,7 +9,6 @@ This library offers reusable types to do these checks.
 These types do the checks:
 
 * `IsNullableType<T>` - Checks if `T` is possibly `null` or `undefined`.
-* `IsNonNullableType<T>` - Checks if `T` is not possibly `null` or `undefined`.
 * `IsExactType<T, U>` - Checks if `T` exactly matches `U`.
 * `HasType<T, U>` - Checks if `T` has `U`.
 * `NotHasType<T, U>` - Checks if `T` does not have `U`.
@@ -18,7 +17,29 @@ These types do the checks:
 
 They will resolve to the type `true` when they match and `false` otherwise.
 
-## Use
+## Ways to Test
+
+Use:
+
+1. `AssertTrue` or `AssertFalse` - Have all tests in the type domain.
+2. `assert` - Alternate testing syntax.
+
+## Use with `AssertTrue` and `AssertFalse`
+
+Doing a test:
+
+```ts
+import { AssertTrue, AssertFalse, HasType, IsNeverType, IsNullableType } from "conditional-type-checks";
+
+const result = someFunction(someParam);
+
+type doTest = AssertTrue<HasType<typeof result, string> | IsNullableType<typeof result>>
+    | AssertFalse<IsNeverType<typeof result>>;
+```
+
+**Warning:** Do not use an intersection type in the type parameter for `AssertTrue` and `AssertFalse` (ex. `HasType<string | number, string> & IsNeverType<never>`) because it will cause the assertion to pass if only one of the checks passes.
+
+## Use with `assert`
 
 Doing a test:
 
