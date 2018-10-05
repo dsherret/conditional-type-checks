@@ -31,7 +31,7 @@ Doing a test:
 ```ts
 import { AssertTrue, AssertFalse, HasType, IsNeverType, IsNullableType } from "conditional-type-checks";
 
-const result = someFunction(someParam);
+const result = someFunction(someArg);
 
 type doTest = AssertTrue<HasType<typeof result, string> | IsNullableType<typeof result>>
     | AssertFalse<IsNeverType<typeof result>>;
@@ -46,7 +46,7 @@ Doing a test:
 ```ts
 import { assert, IsExactType, IsNullableType } from "conditional-type-checks";
 
-const result = someFunction(someParam);
+const result = someFunction(someArg);
 // compile error if the type of `result` is not exactly `string | number`
 assert<IsExactType<typeof result, string | number>>(true);
 ```
