@@ -21,10 +21,10 @@ They will resolve to the type `true` when they match and `false` otherwise.
 
 Use either (whichever you prefer);
 
-1. The `AssertTrue` or `AssertFalse` types.
+1. The `AssertTrue`, `AssertFalse`, or `Assert` types.
 2. The `assert` function.
 
-### Use with `AssertTrue` and `AssertFalse`
+### Use with `AssertTrue`, `AssertFalse`, and `Assert
 
 Doing a test:
 
@@ -34,7 +34,8 @@ import { AssertTrue, AssertFalse, HasType, IsNeverType, IsNullableType } from "c
 const result = someFunction(someArg);
 
 type doTest = AssertTrue<HasType<typeof result, string> | IsNullableType<typeof result>>
-    | AssertFalse<IsNeverType<typeof result>>;
+    | AssertFalse<IsNeverType<typeof result>>
+    | Assert<HasType<typeof result, number>, true>;
 ```
 
 **Warning:** Do not use an intersection type in the type parameter for `AssertTrue` and `AssertFalse` (ex. `HasType<string | number, string> & IsNeverType<never>`) because it will cause the assertion to pass if only one of the checks passes.
