@@ -24,5 +24,8 @@
     "bugs": {
         "url": "https://github.com/dsherret/conditional-type-checks/issues"
     },
-    "homepage": "https://github.com/dsherret/conditional-type-checks#readme"
+    "homepage": "https://github.com/dsherret/conditional-type-checks#readme",
+    "devDependencies": {
+        "typescript": "^3.3.1"
+    }
 }
