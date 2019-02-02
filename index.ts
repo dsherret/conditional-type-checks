@@ -1,11 +1,18 @@
 /**
- * Asserts if the type provided in the type parameter resolves to true.
+ * Asserts at compile time that the type provided in the type parameter resolves to true.
  * @param expectTrue - True if the passed in type parameter resolved to true.
  */
 export function assert<T extends true | false>(expectTrue: T) {
 }
 
+/**
+ * Asserts at compile time that the type provided in the type parameter resolves to true.
+ */
 export type AssertTrue<T extends true> = never;
+
+/**
+ * Asserts at compile time that the type provided in the type parameter resolves to false.
+ */
 export type AssertFalse<T extends false> = never;
 
 /**
