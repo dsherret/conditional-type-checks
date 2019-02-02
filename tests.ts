@@ -1,4 +1,5 @@
-import { IsNullableType, IsExactType, HasType, NotHasType, IsNeverType, assert, AssertTrue, AssertFalse } from "./index";
+import { IsNullableType, IsExactType, HasType, NotHasType, IsNeverType, assert, AssertTrue, AssertFalse,
+    Assert } from "./index";
 
 // IsNullableType
 {
@@ -65,4 +66,10 @@ import { IsNullableType, IsExactType, HasType, NotHasType, IsNeverType, assert, 
 // AssertFalse
 {
     type test = AssertFalse<IsNeverType<string>>;
+}
+
+// Assert
+{
+    type test = Assert<HasType<string | number, number>, true>
+        | Assert<HasType<string | number, Date>, false>;
 }
