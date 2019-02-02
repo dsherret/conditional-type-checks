@@ -16,10 +16,12 @@ import { IsNullableType, IsExactType, HasType, NotHasType, IsNeverType, assert, 
     // matching
     assert<IsExactType<string | number, string | number>>(true);
     assert<IsExactType<string | number | Date, string | number | Date>>(true);
+    assert<IsExactType<string | undefined, string | undefined>>(true);
 
     // not matching
     assert<IsExactType<string | number | Date, string | number>>(false);
     assert<IsExactType<string, string | number>>(false);
+    assert<IsExactType<string | undefined, string>>(false);
 }
 
 // HasType
