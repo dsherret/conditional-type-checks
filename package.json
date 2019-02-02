@@ -8,7 +8,9 @@
     "definition": "dist/index.d.ts"
   },
   "scripts": {
-    "test": "tsc"
+    "build": "tsc",
+    "test": "tsc",
+    "dopublish": "yarn run build && npm publish --otp"
   },
   "repository": {
     "type": "git",
