@@ -2,9 +2,11 @@
 
 As TypeScript's type system becomes more complex, it's useful to be able to write tests for what a type should be.
 
-This library offers reusable types to do these checks.
+This library offers reusable conditional types to do these checks.
 
 ## Type Checks
+
+These will resolve to the type `true` when they match and `false` otherwise.
 
 * `IsNullableType<T>` - Checks if `T` is possibly `null` or `undefined`.
 * `IsExactType<T, U>` - Checks if `T` exactly matches `U`.
@@ -13,11 +15,9 @@ This library offers reusable types to do these checks.
 * `IsNeverType<T>` - Checks if `T` is the never type.
 * More to come...
 
-They will resolve to the type `true` when they match and `false` otherwise.
-
 ## Ways to Test
 
-Use either (whichever you prefer);
+Use what you prefer:
 
 1. The `AssertTrue`, `AssertFalse`, or `Assert` types.
 2. The `assert` function.
@@ -46,6 +46,7 @@ Doing a test:
 import { assert, IsExactType, IsNullableType } from "conditional-type-checks";
 
 const result = someFunction(someArg);
+
 // compile error if the type of `result` is not exactly `string | number`
 assert<IsExactType<typeof result, string | number>>(true);
 ```
