@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/dsherret/conditional-type-checks/compare/v0.7.0...v1.0.0) (2019-02-23)
+
+
+### Code Refactoring
+
+* Remove deprecated verbose type names (ex. `IsNeverType` -> `IsNever`). ([6ff3df7](https://github.com/dsherret/conditional-type-checks/commit/6ff3df7))
+
+
+### BREAKING CHANGES
+
+* The -`Type` prefixes on the type checks were removed.
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/dsherret/conditional-type-checks/compare/v0.6.0...v0.7.0) (2019-02-23)
 
