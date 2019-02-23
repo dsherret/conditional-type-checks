@@ -10,6 +10,7 @@
 *.csproj
 *.csproj.user
 *.sln
+CODE_OF_CONDUCT.md
 tsconfig.json
 index.ts
 tests.ts
