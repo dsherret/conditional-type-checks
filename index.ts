@@ -26,22 +26,16 @@ export type Assert<T extends true | false, Expected extends T> = never;
 export type Has<T, U> = IsAny<T> extends true ? true
     : IsAny<U> extends true ? false
     : Extract<T, U> extends never ? false : true;
-/** @deprecated Use `Has<T, U>` */
-export type HasType<T, U> = Has<T, U>;
 
 /**
  * Checks if the type `T` does not have the specified type `U`.
  */
 export type NotHas<T, U> = Has<T, U> extends true ? false : true;
-/** @deprecated Use `NotHas<T, U>` */
-export type NotHasType<T, U> = NotHas<T, U>;
 
 /**
  * Checks if the type `T` is possibly null or undefined.
  */
 export type IsNullable<T> = Extract<T, null | undefined> extends never ? false : true;
-/** @deprecated Use `IsNullable<T>` */
-export type IsNullableType<T> = IsNullable<T>;
 
 /**
  * Checks if the type `T` exactly matches type `U`.
@@ -50,8 +44,6 @@ export type IsNullableType<T> = IsNullable<T>;
 export type IsExact<T, U> = IsAny<T> extends true ? IsAny<U> extends true ? true : false
     : IsAny<U> extends true ? false
     : [T] extends [U] ? [U] extends [T] ? true : false : false;
-/** @deprecated Use `IsExactType<T, U>` */
-export type IsExactType<T, U> = IsExact<T, U>;
 
 /**
  * Checks if the type `T` is the `any` type.
@@ -64,8 +56,6 @@ export type IsAny<T> = IsUnknown<T> extends true ? false
  * Checks it the type `T` is the `never` type.
  */
 export type IsNever<T> = [T] extends [never] ? true : false;
-/** @deprecated Use `IsNever<T>` */
-export type IsNeverType<T> = IsNever<T>;
 
 /**
  * Checks it the type `T` is the `unknown` type.
