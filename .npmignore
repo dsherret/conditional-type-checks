@@ -10,6 +10,7 @@
 *.csproj
 *.csproj.user
 *.sln
+tsconfig.json
 index.ts
 tests.ts
 dist/tests.js
