@@ -8,11 +8,11 @@ This library offers reusable types to do these checks.
 
 These types do the checks:
 
-* `IsNullableType<T>` - Checks if `T` is possibly `null` or `undefined`.
-* `IsExactType<T, U>` - Checks if `T` exactly matches `U`.
-* `HasType<T, U>` - Checks if `T` has `U`.
-* `NotHasType<T, U>` - Checks if `T` does not have `U`.
-* `IsNeverType<T>` - Checks if `T` is the never type.
+* `IsNullable<T>` - Checks if `T` is possibly `null` or `undefined`.
+* `IsExact<T, U>` - Checks if `T` exactly matches `U`.
+* `Has<T, U>` - Checks if `T` has `U`.
+* `NotHas<T, U>` - Checks if `T` does not have `U`.
+* `IsNever<T>` - Checks if `T` is the never type.
 * More to come...
 
 They will resolve to the type `true` when they match and `false` otherwise.
@@ -29,34 +29,34 @@ Use either (whichever you prefer);
 Doing a test:
 
 ```ts
-import { AssertTrue, AssertFalse, HasType, IsNeverType, IsNullableType } from "conditional-type-checks";
+import { AssertTrue, AssertFalse, Has, IsNever, IsNullable } from "conditional-type-checks";
 
 const result = someFunction(someArg);
 
-type doTest = AssertTrue<HasType<typeof result, string> | IsNullableType<typeof result>>
-    | AssertFalse<IsNeverType<typeof result>>
-    | Assert<HasType<typeof result, number>, true>;
+type doTest = AssertTrue<Has<typeof result, string> | IsNullable<typeof result>>
+    | AssertFalse<IsNever<typeof result>>
+    | Assert<Has<typeof result, number>, true>;
 ```
 
-**Warning:** Do not use an intersection type in the type parameter for `AssertTrue` and `AssertFalse` (ex. `HasType<string | number, string> & IsNeverType<never>`) because it will cause the assertion to pass if only one of the checks passes.
+**Warning:** Do not use an intersection type in the type parameter for `AssertTrue` and `AssertFalse` (ex. `Has<string | number, string> & IsNever<never>`) because it will cause the assertion to pass if only one of the checks passes.
 
 ### Use with `assert`
 
 Doing a test:
 
 ```ts
-import { assert, IsExactType, IsNullableType } from "conditional-type-checks";
+import { assert, IsExact } from "conditional-type-checks";
 
 const result = someFunction(someArg);
 // compile error if the type of `result` is not exactly `string | number`
-assert<IsExactType<typeof result, string | number>>(true);
+assert<IsExact<typeof result, string | number>>(true);
 ```
 
 Failure:
 
 ```ts
 // causes a compile error that `true` is not assignable to `false`
-assert<IsNullableType<string>>(true); // string is not nullable
+assert<IsNullable<string>>(true); // string is not nullable
 ```
 
 ## Install
