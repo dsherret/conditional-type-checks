@@ -1,6 +1,6 @@
 # Conditional Type Checks
 
-As TypeScript's type system becomes more complex, it's useful to be able to write tests for what a type should be.
+As TypeScript's type system becomes more complex it's useful to be able to write tests for what a type should be.
 
 This library offers reusable conditional types to do these checks.
 
