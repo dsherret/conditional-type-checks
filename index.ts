@@ -50,6 +50,13 @@ export type IsExact<T, U> = Exclude<T, U> extends never ? Exclude<U, T> extends 
 export type IsExactType<T, U> = IsExact<T, U>;
 
 /**
+ * Checks if the type `T` is the `any` type.
+ */
+export type IsAny<T> = IsUnknown<T> extends true ? false
+    : IsNever<T> extends true ? false
+    : T extends any ? any extends T ? true : false : false;
+
+/**
  * Checks it the type `T` is the `never` type.
  */
 export type IsNever<T> = [T] extends [never] ? true : false;
