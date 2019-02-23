@@ -1,5 +1,5 @@
-import { IsNullable, IsExact, Has, NotHas, IsNever, assert, AssertTrue, AssertFalse,
-    Assert } from "./index";
+import { IsNullable, IsExact, Has, NotHas, IsNever, IsUnknown,
+    assert, AssertTrue, AssertFalse, Assert } from "./index";
 
 // IsNullable
 {
@@ -56,6 +56,19 @@ import { IsNullable, IsExact, Has, NotHas, IsNever, assert, AssertTrue, AssertFa
 
     // not matching
     assert<IsNever<string>>(false);
+    assert<IsNever<any>>(false);
+    assert<IsNever<unknown>>(false);
+}
+
+// IsUnknown
+{
+    // matching
+    assert<IsUnknown<unknown>>(true);
+
+    // not matching
+    assert<IsUnknown<string>>(false);
+    assert<IsUnknown<any>>(false);
+    assert<IsUnknown<never>>(false);
 }
 
 // AssertTrue
