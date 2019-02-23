@@ -12,6 +12,7 @@ These types do the checks:
 * `IsExact<T, U>` - Checks if `T` exactly matches `U`.
 * `Has<T, U>` - Checks if `T` has `U`.
 * `NotHas<T, U>` - Checks if `T` does not have `U`.
+* `IsAny<T>` - Checks if `T` is the `any` type.
 * `IsNever<T>` - Checks if `T` is the `never` type.
 * `IsUnknown<T>` - Checks if `T` is the `unknown` type.
 * More to come...
