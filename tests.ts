@@ -34,10 +34,13 @@ import { IsNullable, IsExact, Has, NotHas, IsAny, IsNever, IsUnknown,
     assert<Has<string | number, string>>(true);
     assert<Has<number, number>>(true);
     assert<Has<string | number, Date | string>>(true); // maybe?
+    assert<Has<any, number>>(true);
+    assert<Has<any, any>>(true);
 
     // not matching
     assert<Has<string | number, Date>>(false);
     assert<Has<string, number>>(false);
+    assert<Has<number, any>>(false);
 }
 
 // NotHas
