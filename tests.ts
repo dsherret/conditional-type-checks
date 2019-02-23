@@ -10,6 +10,9 @@ import { IsNullable, IsExact, Has, NotHas, IsAny, IsNever, IsUnknown,
 
     // not matching
     assert<IsNullable<string>>(false);
+    assert<IsNullable<any>>(false);
+    assert<IsNullable<never>>(false);
+    assert<IsNullable<unknown>>(false);
 }
 
 // IsExact
@@ -19,6 +22,8 @@ import { IsNullable, IsExact, Has, NotHas, IsAny, IsNever, IsUnknown,
     assert<IsExact<string | number | Date, string | number | Date>>(true);
     assert<IsExact<string | undefined, string | undefined>>(true);
     assert<IsExact<any, any>>(true); // ok to have any for both
+    assert<IsExact<unknown, unknown>>(true);
+    assert<IsExact<never, never>>(true);
 
     // not matching
     assert<IsExact<string | number | Date, string | number>>(false);
@@ -26,6 +31,7 @@ import { IsNullable, IsExact, Has, NotHas, IsAny, IsNever, IsUnknown,
     assert<IsExact<string | undefined, string>>(false);
     assert<IsExact<string | undefined, any | string>>(false);
     assert<IsExact<any | string | undefined, string>>(false);
+    assert<IsExact<never, never | string>>(false);
 }
 
 // Has
