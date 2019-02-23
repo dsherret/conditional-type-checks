@@ -2,11 +2,11 @@
 
 As TypeScript's type system becomes more complex, it's useful to be able to write tests for what a type should be.
 
-This library offers reusable types to do these checks.
+This library offers reusable conditional types to do these checks.
 
 ## Type Checks
 
-These types do the checks:
+These will resolve to the type `true` when they match and `false` otherwise.
 
 * `IsNullable<T>` - Checks if `T` is possibly `null` or `undefined`.
 * `IsExact<T, U>` - Checks if `T` exactly matches `U`.
@@ -17,16 +17,14 @@ These types do the checks:
 * `IsUnknown<T>` - Checks if `T` is the `unknown` type.
 * More to come...
 
-They will resolve to the type `true` when they match and `false` otherwise.
-
 ## Ways to Test
 
-Use either (whichever you prefer);
+Use what you prefer:
 
 1. The `AssertTrue`, `AssertFalse`, or `Assert` types.
 2. The `assert` function.
 
-### Use with `AssertTrue`, `AssertFalse`, and `Assert
+### Use with `AssertTrue`, `AssertFalse`, and `Assert`
 
 Doing a test:
 
@@ -40,7 +38,7 @@ type doTest = AssertTrue<Has<typeof result, string> | IsNullable<typeof result>>
     | Assert<Has<typeof result, number>, true>;
 ```
 
-**Warning:** Do not use an intersection type in the type parameter for `AssertTrue` and `AssertFalse` (ex. `Has<string | number, string> & IsNever<never>`) because it will cause the assertion to pass if only one of the checks passes.
+**Warning:** Do not use an intersection type between assertions (ex. `HasType<string | number, string> & IsNeverType<never>`) because it will cause the assertion to pass if only one of the checks passes.
 
 ### Use with `assert`
 
@@ -50,6 +48,7 @@ Doing a test:
 import { assert, IsExact } from "conditional-type-checks";
 
 const result = someFunction(someArg);
+
 // compile error if the type of `result` is not exactly `string | number`
 assert<IsExact<typeof result, string | number>>(true);
 ```
