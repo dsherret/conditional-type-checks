@@ -45,7 +45,9 @@ export type IsNullableType<T> = IsNullable<T>;
  * Checks if the type `T` exactly matches type `U`.
  * @remarks This is useful for checking if two union types match exactly.
  */
-export type IsExact<T, U> = Exclude<T, U> extends never ? Exclude<U, T> extends never ? true : false : false;
+export type IsExact<T, U> = IsAny<T> extends true ? IsAny<U> extends true ? true : false
+    : IsAny<U> extends true ? false
+    : [T] extends [U] ? [U] extends [T] ? true : false : false;
 /** @deprecated Use `IsExactType<T, U>` */
 export type IsExactType<T, U> = IsExact<T, U>;
 

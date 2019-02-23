@@ -18,11 +18,14 @@ import { IsNullable, IsExact, Has, NotHas, IsAny, IsNever, IsUnknown,
     assert<IsExact<string | number, string | number>>(true);
     assert<IsExact<string | number | Date, string | number | Date>>(true);
     assert<IsExact<string | undefined, string | undefined>>(true);
+    assert<IsExact<any, any>>(true); // ok to have any for both
 
     // not matching
     assert<IsExact<string | number | Date, string | number>>(false);
     assert<IsExact<string, string | number>>(false);
     assert<IsExact<string | undefined, string>>(false);
+    assert<IsExact<string | undefined, any | string>>(false);
+    assert<IsExact<any | string | undefined, string>>(false);
 }
 
 // Has
