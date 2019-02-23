@@ -38,7 +38,7 @@ type doTest = AssertTrue<Has<typeof result, string> | IsNullable<typeof result>>
     | Assert<Has<typeof result, number>, true>;
 ```
 
-**Warning:** Do not use an intersection type between assertions (ex. `Has<string | number, string> & IsNever<never>`) because it will cause the assertion to pass if only one of the checks passes.
+**Warning:** Do not use an intersection type between checks (ex. `Has<string | number, string> & IsNever<never>`) because it will cause everything to pass if only one of the checks passes.
 
 ### Use with `assert`
 
