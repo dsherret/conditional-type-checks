@@ -74,6 +74,10 @@ import { IsNullable, IsExact, Has, NotHas, IsAny, IsNever, IsUnknown,
     assert<IsAny<string>>(false);
     assert<IsAny<unknown>>(false);
     assert<IsAny<never>>(false);
+
+    // tests for issue #3 (IsAny resolving to boolean)
+    assert<IsExact<IsAny<string>, false>>(true);
+    assert<IsExact<IsAny<5>, false>>(true);
 }
 
 // IsNever
