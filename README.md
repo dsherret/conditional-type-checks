@@ -1,5 +1,8 @@
 # Conditional Type Checks
 
+[![npm version](https://badge.fury.io/js/conditional-type-checks.svg)](https://badge.fury.io/js/conditional-type-checks)
+[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
+
 As TypeScript's type system becomes more complex it's useful to be able to write tests for what a type should be.
 
 This library offers reusable conditional types to do these checks.
