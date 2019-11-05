@@ -28,6 +28,6 @@
   },
   "homepage": "https://github.com/dsherret/conditional-type-checks#readme",
   "devDependencies": {
-    "typescript": "^3.3.1"
+    "typescript": "^3.6.3"
   }
 }
