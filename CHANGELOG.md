@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/dsherret/conditional-type-checks/compare/v1.0.1...v1.0.3) (2019-11-05)
+
+
+### Bug Fixes
+
+* [#8](https://github.com/dsherret/conditional-type-checks/issues/8), [#7](https://github.com/dsherret/conditional-type-checks/issues/7) - Fix IsExact not looking at if an object type had optional or `any` property types. ([c17a799](https://github.com/dsherret/conditional-type-checks/commit/c17a799))
+
+
+
 <a name="1.0.1"></a>
 # [1.0.1](https://github.com/dsherret/conditional-type-checks/compare/v1.0.0...v1.0.1) (2019-05-11)
 
