@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/dsherret/conditional-type-checks/compare/v1.0.3...v1.0.4) (2019-11-05)
+
+
+### Bug Fixes
+
+* IsExact - Fix property with unknown in one object type and any type in other. ([cf7440a](https://github.com/dsherret/conditional-type-checks/commit/cf7440a))
+
+
+
 ### [1.0.3](https://github.com/dsherret/conditional-type-checks/compare/v1.0.1...v1.0.3) (2019-11-05)
 
 
