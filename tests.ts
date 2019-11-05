@@ -59,6 +59,7 @@ import { IsNullable, IsExact, Has, NotHas, IsAny, IsNever, IsUnknown,
     assert<IsExact<{ prop: string; }, { prop: never; }>>(false);
     assert<IsExact<{ prop: { prop: any; }; }, { prop: { prop: string; }; }>>(false);
     assert<IsExact<{ prop: any; } | { prop: string; }, { prop: number; } | { prop: string; }>>(false);
+    assert<IsExact<{ prop: string | undefined; }, { prop?: string; }>>(false); // these are different
 }
 
 // Has
