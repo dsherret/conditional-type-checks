@@ -24,6 +24,10 @@ import { IsNullable, IsExact, Has, NotHas, IsAny, IsNever, IsUnknown,
     assert<IsExact<any, any>>(true); // ok to have any for both
     assert<IsExact<unknown, unknown>>(true);
     assert<IsExact<never, never>>(true);
+    assert<IsExact<{}, {}>>(true);
+    assert<IsExact<{ prop: string; }, { prop: string; }>>(true);
+    assert<IsExact<{ prop: { prop: string; }; }, { prop: { prop: string; }; }>>(true);
+    assert<IsExact<Window, Window>>(true);
 
     // not matching
     assert<IsExact<string | number | Date, string | number>>(false);
@@ -32,6 +36,14 @@ import { IsNullable, IsExact, Has, NotHas, IsAny, IsNever, IsUnknown,
     assert<IsExact<string | undefined, any | string>>(false);
     assert<IsExact<any | string | undefined, string>>(false);
     assert<IsExact<never, never | string>>(false);
+    assert<IsExact<MouseEvent | Window, MouseEvent>>(false);
+    assert<IsExact<{ name: string; other?: Date; }, { name: string; }>>(false);
+    assert<IsExact<{ prop: Date; }, { prop: string; }>>(false);
+    assert<IsExact<{ other?: Date; }, { prop?: string; }>>(false);
+    assert<IsExact<{ prop: { prop?: string; }; }, { prop: { prop: string; }; }>>(false);
+    assert<IsExact<{ prop: any; }, { prop: string; }>>(false);
+    assert<IsExact<{ prop: { prop: any; }; }, { prop: { prop: string; }; }>>(false);
+    assert<IsExact<{ prop: any; } | { prop: string; }, { prop: number; } | { prop: string; }>>(false);
 }
 
 // Has

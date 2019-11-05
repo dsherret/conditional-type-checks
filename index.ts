@@ -41,9 +41,13 @@ export type IsNullable<T> = Extract<T, null | undefined> extends never ? false :
  * Checks if the type `T` exactly matches type `U`.
  * @remarks This is useful for checking if two union types match exactly.
  */
-export type IsExact<T, U> = IsAny<T> extends true ? IsAny<U> extends true ? true : false
-    : IsAny<U> extends true ? false
-    : [T] extends [U] ? [U] extends [T] ? true : false : false;
+export type IsExact<T, U> = TupleMatches<AnyToNominal<T>, AnyToNominal<U>> extends true
+    ? TupleMatches<DeepAnyToNominalAndMakeRequired<T>, DeepAnyToNominalAndMakeRequired<U>> extends true // catch optional properties
+    ? true : false : false;
+
+type DeepAnyToNominalAndMakeRequired<T> = {
+    [P in keyof T]-?: AnyToNominal<DeepAnyToNominalAndMakeRequired<T[P]>>;
+};
 
 /**
  * Checks if the type `T` is the `any` type.
@@ -62,3 +66,7 @@ export type IsNever<T> = [T] extends [never] ? true : false;
  */
 export type IsUnknown<T> = IsNever<T> extends true ? false
     : (T extends unknown ? unknown extends T ? /* catch any type */ T extends string ? false : true : false : false);
+
+type TupleMatches<T, U> = [T] extends [U] ? [U] extends [T] ? true : false : false;
+
+type AnyToNominal<T> = IsAny<T> extends true ? { __conditionalTypeChecksAny__: undefined; } : T;
