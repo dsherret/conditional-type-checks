@@ -51,9 +51,8 @@ type DeepMakeRequiredForIsExact<T> = {
 /**
  * Checks if type `T` is the `any` type.
  */
-export type IsAny<T> = IsUnknown<T> extends true ? false
-    : IsNever<T> extends true ? false
-    : (Matches<T, any> extends true ? true : false ) extends true ? true : false;
+// https://stackoverflow.com/a/49928360/3406963
+export type IsAny<T> = 0 extends (1 & T) ? true : false;
 
 /**
  * Checks if type `T` is the `never` type.
