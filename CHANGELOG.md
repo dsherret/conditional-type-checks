@@ -5,9 +5,9 @@ All notable changes to this project will be documented in this file. See [standa
 ### [1.0.5](https://github.com/dsherret/conditional-type-checks/compare/v1.0.4...v1.0.5) (2019-12-04)
 
 
-### Bug Fixes
+### Refactoring
 
-* improve `isAny` type ([dd689d4](https://github.com/dsherret/conditional-type-checks/commit/dd689d4)), closes [#10](https://github.com/dsherret/conditional-type-checks/issues/10)
+* Improve `isAny` type ([dd689d4](https://github.com/dsherret/conditional-type-checks/commit/dd689d4)), closes [#10](https://github.com/dsherret/conditional-type-checks/issues/10) - Thanks [@smmoosavi](https://github.com/smmoosavi)!
 
 
 
