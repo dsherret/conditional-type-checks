@@ -30,7 +30,7 @@ export type Has<T, U> = IsAny<T> extends true ? true
 /**
  * Checks if type `T` does not have the specified type `U`.
  */
-export type NotHas<T, U> = Has<T, U> extends true ? false : true;
+export type NotHas<T, U> = Has<T, U> extends false ? true : false;
 
 /**
  * Checks if type `T` is possibly null or undefined.
@@ -62,8 +62,11 @@ export type IsNever<T> = [T] extends [never] ? true : false;
 /**
  * Checks if type `T` is the `unknown` type.
  */
-export type IsUnknown<T> = IsNever<T> extends true ? false
-    : (T extends unknown ? unknown extends T ? T extends string /* catch any type */ ? false : true : false : false);
+export type IsUnknown<T> = IsNever<T> extends false
+    ? T extends unknown
+    ? unknown extends T
+    ? IsAny<T> extends false
+    ? true : false : false : false : false;
 
 type TupleMatches<T, U> = Matches<[T], [U]> extends true ? true : false;
 type Matches<T, U> = T extends U ? U extends T ? true : false : false;
