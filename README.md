@@ -1,6 +1,8 @@
 # Conditional Type Checks
 
 [![npm version](https://badge.fury.io/js/conditional-type-checks.svg)](https://badge.fury.io/js/conditional-type-checks)
+[![CI](https://github.com/dsherret/conditional-type-checks/workflows/CI/badge.svg)](https://github.com/dsherret/conditional-type-checks/actions?query=workflow%3ACI)
+[![deno doc](https://doc.deno.land/badge.svg)](https://doc.deno.land/https/deno.land/x/conditional_type_checks/mod.ts)
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
 As TypeScript's type system becomes more complex it's useful to be able to write tests for what a type should be.
@@ -33,19 +35,19 @@ Doing a test:
 
 ```ts
 import {
-    AssertFalse,
-    AssertTrue,
-    Has,
-    IsNever,
-    IsNullable,
+  AssertFalse,
+  AssertTrue,
+  Has,
+  IsNever,
+  IsNullable,
 } from "https://deno.land/x/conditional_type_checks/mod.ts";
 
 const result = someFunction(someArg);
 
 type doTest =
-    | AssertTrue<Has<typeof result, string> | IsNullable<typeof result>>
-    | AssertFalse<IsNever<typeof result>>
-    | Assert<Has<typeof result, number>, true>;
+  | AssertTrue<Has<typeof result, string> | IsNullable<typeof result>>
+  | AssertFalse<IsNever<typeof result>>
+  | Assert<Has<typeof result, number>, true>;
 ```
 
 **Warning:** Do not use an intersection type between checks (ex. `Has<string | number, string> & IsNever<never>`) because it will cause everything to pass if only one of the checks passes.
@@ -56,8 +58,8 @@ Doing a test:
 
 ```ts
 import {
-    assert,
-    IsExact,
+  assert,
+  IsExact,
 } from "https://deno.land/x/conditional_type_checks/mod.ts";
 
 const result = someFunction(someArg);

@@ -1,12 +1,7 @@
 {
   "$schema": "https://dprint.dev/schemas/v0.json",
   "incremental": true,
-  "typescript": {
-  },
-  "json": {
-  },
-  "markdown": {
-  },
+  "indentWidth": 2,
   "includes": ["**/*.{ts,tsx,js,jsx,cjs,mjs,json,md}"],
   "excludes": [
     "**/node_modules",
