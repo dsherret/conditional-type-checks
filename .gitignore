@@ -1,12 +1,2 @@
 /node_modules
-/.vscode
-*.js.map
-/obj
-/temp
-/bin
-*.suo
-*.csproj
-*.csproj.user
-*.sln
-/.vs
 /dist

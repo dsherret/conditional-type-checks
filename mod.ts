@@ -25,7 +25,8 @@ export type Assert<T extends true | false, Expected extends T> = never;
  */
 export type Has<T, U> = IsAny<T> extends true ? true
     : IsAny<U> extends true ? false
-    : Extract<T, U> extends never ? false : true;
+    : Extract<T, U> extends never ? false
+    : true;
 
 /**
  * Checks if type `T` does not have the specified type `U`.
@@ -42,7 +43,9 @@ export type IsNullable<T> = Extract<T, null | undefined> extends never ? false :
  */
 export type IsExact<T, U> = TupleMatches<AnyToBrand<T>, AnyToBrand<U>> extends true
     ? TupleMatches<DeepMakeRequiredForIsExact<T>, DeepMakeRequiredForIsExact<U>> extends true // catch optional properties
-    ? true : false : false;
+        ? true
+    : false
+    : false;
 
 type DeepMakeRequiredForIsExact<T> = {
     [P in keyof T]-?: DeepMakeRequiredForIsExact<AnyToBrand<T[P]>>;
@@ -63,12 +66,10 @@ export type IsNever<T> = [T] extends [never] ? true : false;
  * Checks if type `T` is the `unknown` type.
  */
 export type IsUnknown<T> = IsNever<T> extends false
-    ? T extends unknown
-    ? unknown extends T
-    ? IsAny<T> extends false
-    ? true : false : false : false : false;
+    ? T extends unknown ? unknown extends T ? IsAny<T> extends false ? true : false : false : false
+    : false;
 
 type TupleMatches<T, U> = Matches<[T], [U]> extends true ? true : false;
 type Matches<T, U> = T extends U ? U extends T ? true : false : false;
 
-type AnyToBrand<T> = IsAny<T> extends true ? { __conditionalTypeChecksAny__: undefined; } : T;
+type AnyToBrand<T> = IsAny<T> extends true ? { __conditionalTypeChecksAny__: undefined } : T;

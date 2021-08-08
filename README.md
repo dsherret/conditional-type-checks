@@ -11,14 +11,14 @@ This library offers reusable conditional types to do these checks.
 
 These will resolve to the type `true` when they match and `false` otherwise.
 
-* `IsNullable<T>` - Checks if `T` is possibly `null` or `undefined`.
-* `IsExact<T, U>` - Checks if `T` exactly matches `U`.
-* `Has<T, U>` - Checks if `T` has `U`.
-* `NotHas<T, U>` - Checks if `T` does not have `U`.
-* `IsAny<T>` - Checks if `T` is the `any` type.
-* `IsNever<T>` - Checks if `T` is the `never` type.
-* `IsUnknown<T>` - Checks if `T` is the `unknown` type.
-* More to come...
+- `IsNullable<T>` - Checks if `T` is possibly `null` or `undefined`.
+- `IsExact<T, U>` - Checks if `T` exactly matches `U`.
+- `Has<T, U>` - Checks if `T` has `U`.
+- `NotHas<T, U>` - Checks if `T` does not have `U`.
+- `IsAny<T>` - Checks if `T` is the `any` type.
+- `IsNever<T>` - Checks if `T` is the `never` type.
+- `IsUnknown<T>` - Checks if `T` is the `unknown` type.
+- More to come...
 
 ## Ways to Test
 
@@ -32,11 +32,18 @@ Use what you prefer:
 Doing a test:
 
 ```ts
-import { AssertTrue, AssertFalse, Has, IsNever, IsNullable } from "conditional-type-checks";
+import {
+    AssertFalse,
+    AssertTrue,
+    Has,
+    IsNever,
+    IsNullable,
+} from "https://deno.land/x/conditional_type_checks/mod.ts";
 
 const result = someFunction(someArg);
 
-type doTest = AssertTrue<Has<typeof result, string> | IsNullable<typeof result>>
+type doTest =
+    | AssertTrue<Has<typeof result, string> | IsNullable<typeof result>>
     | AssertFalse<IsNever<typeof result>>
     | Assert<Has<typeof result, number>, true>;
 ```
@@ -48,7 +55,10 @@ type doTest = AssertTrue<Has<typeof result, string> | IsNullable<typeof result>>
 Doing a test:
 
 ```ts
-import { assert, IsExact } from "conditional-type-checks";
+import {
+    assert,
+    IsExact,
+} from "https://deno.land/x/conditional_type_checks/mod.ts";
 
 const result = someFunction(someArg);
 
@@ -63,7 +73,7 @@ Failure:
 assert<IsNullable<string>>(true); // string is not nullable
 ```
 
-## Install
+## NPM Install
 
 ```
 npm install --save-dev conditional-type-checks

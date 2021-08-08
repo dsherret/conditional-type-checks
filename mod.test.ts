@@ -1,5 +1,16 @@
-import { IsNullable, IsExact, Has, NotHas, IsAny, IsNever, IsUnknown,
-    assert, AssertTrue, AssertFalse, Assert } from "./index";
+import {
+    Assert,
+    assert,
+    AssertFalse,
+    AssertTrue,
+    Has,
+    IsAny,
+    IsExact,
+    IsNever,
+    IsNullable,
+    IsUnknown,
+    NotHas,
+} from "./mod.ts";
 
 // IsNullable
 {
@@ -25,11 +36,11 @@ import { IsNullable, IsExact, Has, NotHas, IsAny, IsNever, IsUnknown,
     assert<IsExact<unknown, unknown>>(true);
     assert<IsExact<never, never>>(true);
     assert<IsExact<{}, {}>>(true);
-    assert<IsExact<{ prop: string; }, { prop: string; }>>(true);
-    assert<IsExact<{ prop: { prop: string; }; }, { prop: { prop: string; }; }>>(true);
-    assert<IsExact<{ prop: never; }, { prop: never; }>>(true);
-    assert<IsExact<{ prop: any; }, { prop: any; }>>(true);
-    assert<IsExact<{ prop: unknown; }, { prop: unknown; }>>(true);
+    assert<IsExact<{ prop: string }, { prop: string }>>(true);
+    assert<IsExact<{ prop: { prop: string } }, { prop: { prop: string } }>>(true);
+    assert<IsExact<{ prop: never }, { prop: never }>>(true);
+    assert<IsExact<{ prop: any }, { prop: any }>>(true);
+    assert<IsExact<{ prop: unknown }, { prop: unknown }>>(true);
     assert<IsExact<Window, Window>>(true);
 
     // not matching
@@ -44,22 +55,22 @@ import { IsNullable, IsExact, Has, NotHas, IsAny, IsNever, IsUnknown,
     assert<IsExact<never, never | string>>(false);
     assert<IsExact<unknown, any>>(false);
     assert<IsExact<never, any>>(false);
-    assert<IsExact<MouseEvent | Window, MouseEvent>>(false);
-    assert<IsExact<{ name: string; other?: Date; }, { name: string; }>>(false);
-    assert<IsExact<{ prop: Date; }, { prop: string; }>>(false);
-    assert<IsExact<{ other?: Date; }, { prop?: string; }>>(false);
-    assert<IsExact<{ prop: { prop?: string; }; }, { prop: { prop: string; }; }>>(false);
-    assert<IsExact<{ prop: any; }, { prop: string; }>>(false);
-    assert<IsExact<{ prop: any; }, { prop: unknown; }>>(false);
-    assert<IsExact<{ prop: any; }, { prop: never; }>>(false);
-    assert<IsExact<{ prop: unknown; }, { prop: never; }>>(false);
-    assert<IsExact<{ prop: { prop: unknown; }; }, { prop: { prop: any; }; }>>(false);
-    assert<IsExact<{ prop: { prop: unknown; }; }, { prop: { prop: never; }; }>>(false);
-    assert<IsExact<{ prop: { prop: any; }; }, { prop: { prop: never; }; }>>(false);
-    assert<IsExact<{ prop: string; }, { prop: never; }>>(false);
-    assert<IsExact<{ prop: { prop: any; }; }, { prop: { prop: string; }; }>>(false);
-    assert<IsExact<{ prop: any; } | { prop: string; }, { prop: number; } | { prop: string; }>>(false);
-    assert<IsExact<{ prop: string | undefined; }, { prop?: string; }>>(false); // these are different
+    assert<IsExact<Date | Window, Date>>(false);
+    assert<IsExact<{ name: string; other?: Date }, { name: string }>>(false);
+    assert<IsExact<{ prop: Date }, { prop: string }>>(false);
+    assert<IsExact<{ other?: Date }, { prop?: string }>>(false);
+    assert<IsExact<{ prop: { prop?: string } }, { prop: { prop: string } }>>(false);
+    assert<IsExact<{ prop: any }, { prop: string }>>(false);
+    assert<IsExact<{ prop: any }, { prop: unknown }>>(false);
+    assert<IsExact<{ prop: any }, { prop: never }>>(false);
+    assert<IsExact<{ prop: unknown }, { prop: never }>>(false);
+    assert<IsExact<{ prop: { prop: unknown } }, { prop: { prop: any } }>>(false);
+    assert<IsExact<{ prop: { prop: unknown } }, { prop: { prop: never } }>>(false);
+    assert<IsExact<{ prop: { prop: any } }, { prop: { prop: never } }>>(false);
+    assert<IsExact<{ prop: string }, { prop: never }>>(false);
+    assert<IsExact<{ prop: { prop: any } }, { prop: { prop: string } }>>(false);
+    assert<IsExact<{ prop: any } | { prop: string }, { prop: number } | { prop: string }>>(false);
+    assert<IsExact<{ prop: string | undefined }, { prop?: string }>>(false); // these are different
 }
 
 // Has
@@ -142,6 +153,7 @@ import { IsNullable, IsExact, Has, NotHas, IsAny, IsNever, IsUnknown,
 
 // Assert
 {
-    type test = Assert<Has<string | number, number>, true>
+    type test =
+        | Assert<Has<string | number, number>, true>
         | Assert<Has<string | number, Date>, false>;
 }
