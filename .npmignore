@@ -1,7 +1,0 @@
-/node_modules
-/.vscode
-/.github
-dprint.json
-tsconfig.json
-mod.ts
-mod.test.ts
