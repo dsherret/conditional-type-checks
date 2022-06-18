@@ -42,14 +42,20 @@ export type IsNullable<T> = Extract<T, null | undefined> extends never ? false :
  * Checks if type `T` exactly matches type `U`.
  */
 export type IsExact<T, U> = TupleMatches<AnyToBrand<T>, AnyToBrand<U>> extends true
-  ? TupleMatches<DeepMakeRequiredForIsExact<T>, DeepMakeRequiredForIsExact<U>> extends true // catch optional properties
-    ? true
+  ? TupleMatches<DeepPrepareIsExact<T>, DeepPrepareIsExact<U>> extends true ? true
   : false
   : false;
 
-type DeepMakeRequiredForIsExact<T> = {
-  [P in keyof T]-?: DeepMakeRequiredForIsExact<AnyToBrand<T[P]>>;
+type DeepPrepareIsExact<T, VisitedTypes = never> = {
+  // make optional properties required
+  [P in keyof T]-?: IsAny<T[P]> extends true ? AnyBrand : DeepPrepareIsExactProp<T[P], T, VisitedTypes>;
 };
+
+type DeepPrepareIsExactProp<Prop, Parent, VisitedTypes> = Prop extends VisitedTypes
+  // recursive, bail
+  ? Prop
+  // not recursive, keep going and add the parent type as a visited type
+  : DeepPrepareIsExact<Prop, VisitedTypes | Parent>;
 
 /**
  * Checks if type `T` is the `any` type.
@@ -69,7 +75,8 @@ export type IsUnknown<T> = IsNever<T> extends false
   ? T extends unknown ? unknown extends T ? IsAny<T> extends false ? true : false : false : false
   : false;
 
-type TupleMatches<T, U> = Matches<[T], [U]> extends true ? true : false;
+type TupleMatches<T, U> = Matches<[T], [U]>;
 type Matches<T, U> = T extends U ? U extends T ? true : false : false;
 
-type AnyToBrand<T> = IsAny<T> extends true ? { __conditionalTypeChecksAny__: undefined } : T;
+type AnyToBrand<T> = IsAny<T> extends true ? AnyBrand : T;
+type AnyBrand = { __conditionalTypeChecksAny__: undefined };

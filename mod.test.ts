@@ -157,3 +157,19 @@ import {
     | Assert<Has<string | number, number>, true>
     | Assert<Has<string | number, Date>, false>;
 }
+
+// Recursive types
+{
+  type RecursiveType1 = string | number | Date | RecursiveType1[];
+  assert<IsExact<RecursiveType1, RecursiveType1>>(true);
+  type RecursiveType2 = {
+    a: string;
+    prop: RecursiveType2;
+    sub: {
+      prop: RecursiveType2;
+      other: RecursiveType1;
+    };
+  };
+  assert<IsExact<RecursiveType2, RecursiveType2>>(true);
+  assert<IsExact<RecursiveType1, RecursiveType2>>(false);
+}
