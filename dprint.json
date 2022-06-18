@@ -1,15 +1,12 @@
 {
-  "incremental": true,
   "indentWidth": 2,
   "includes": ["**/*.{ts,tsx,js,jsx,cjs,mjs,json,md}"],
   "excludes": [
-    "**/node_modules",
-    "**/*-lock.json",
-    "CHANGELOG.md"
+    "**/npm"
   ],
   "plugins": [
-    "https://plugins.dprint.dev/typescript-0.59.1.wasm",
-    "https://plugins.dprint.dev/json-0.13.2.wasm",
-    "https://plugins.dprint.dev/markdown-0.11.2.wasm"
+    "https://plugins.dprint.dev/typescript-0.69.2.wasm",
+    "https://plugins.dprint.dev/json-0.15.3.wasm",
+    "https://plugins.dprint.dev/markdown-0.13.3.wasm"
   ]
 }
