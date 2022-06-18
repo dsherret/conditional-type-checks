@@ -71,9 +71,7 @@ export type IsNever<T> = [T] extends [never] ? true : false;
 /**
  * Checks if type `T` is the `unknown` type.
  */
-export type IsUnknown<T> = IsNever<T> extends false
-  ? T extends unknown ? unknown extends T ? IsAny<T> extends false ? true : false : false : false
-  : false;
+export type IsUnknown<T> = unknown extends T ? ([T] extends [null] ? false : true) : false;
 
 type TupleMatches<T, U> = Matches<[T], [U]>;
 type Matches<T, U> = T extends U ? U extends T ? true : false : false;
