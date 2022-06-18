@@ -5,9 +5,9 @@
 [![deno doc](https://doc.deno.land/badge.svg)](https://doc.deno.land/https/deno.land/x/conditional_type_checks/mod.ts)
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
-As TypeScript's type system becomes more complex it's useful to be able to write tests for what a type should be.
+As TypeScript's type system becomes more complex, it's useful to be able to write tests for what a type should be.
 
-This library offers reusable conditional types to do these checks.
+This library offers reusable conditional types to help test your types.
 
 ## Type Checks
 
@@ -34,7 +34,7 @@ Use what you prefer:
 Doing a test:
 
 ```ts
-import {
+import type {
   AssertFalse,
   AssertTrue,
   Has,
@@ -44,7 +44,7 @@ import {
 
 const result = someFunction(someArg);
 
-type doTest =
+type _test =
   | AssertTrue<Has<typeof result, string> | IsNullable<typeof result>>
   | AssertFalse<IsNever<typeof result>>
   | Assert<Has<typeof result, number>, true>;
@@ -75,7 +75,7 @@ Failure:
 assert<IsNullable<string>>(true); // string is not nullable
 ```
 
-## NPM Install
+## npm Install
 
 ```
 npm install --save-dev conditional-type-checks
