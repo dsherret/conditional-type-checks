@@ -41,7 +41,7 @@ import {
   assert<IsExact<{ prop: never }, { prop: never }>>(true);
   assert<IsExact<{ prop: any }, { prop: any }>>(true);
   assert<IsExact<{ prop: unknown }, { prop: unknown }>>(true);
-  assert<IsExact<Window, Window>>(true);
+  assert<IsExact<typeof globalThis, typeof globalThis>>(true);
 
   // not matching
   assert<IsExact<string | number | Date, string | number>>(false);
@@ -55,7 +55,7 @@ import {
   assert<IsExact<never, never | string>>(false);
   assert<IsExact<unknown, any>>(false);
   assert<IsExact<never, any>>(false);
-  assert<IsExact<Date | Window, Date>>(false);
+  assert<IsExact<Date | typeof globalThis, Date>>(false);
   assert<IsExact<{ name: string; other?: Date }, { name: string }>>(false);
   assert<IsExact<{ prop: Date }, { prop: string }>>(false);
   assert<IsExact<{ other?: Date }, { prop?: string }>>(false);
