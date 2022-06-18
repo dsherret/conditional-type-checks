@@ -1,14 +1,14 @@
-import { build } from "https://deno.land/x/dnt@0.2.2/mod.ts";
+import { build, emptyDir } from "https://deno.land/x/dnt@0.26.0/mod.ts";
+
+await emptyDir("./npm");
 
 await build({
   entryPoints: ["./mod.ts"],
   outDir: "./npm",
-  typeCheck: true,
-  declaration: true,
-  test: true,
+  shims: {},
   package: {
     name: "conditional-type-checks",
-    version: "1.0.5",
+    version: Deno.args[0],
     description: "Types for testing TypeScript types.",
     repository: {
       type: "git",
